@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Monitoreo - Submarino Nuclear</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-submarine me-2"></i>SSN-810 "TITÁN"
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#monitor"><i class="bi bi-speedometer2 me-1"></i>Monitor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#solutions"><i class="bi bi-calculator me-1"></i>Soluciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mission"><i class="bi bi-info-circle me-1"></i>Misión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#network"><i class="bi bi-wifi me-1"></i>Redes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <!-- Sección de Monitor -->
+        <section id="monitor" class="mb-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0"><i class="bi bi-speedometer2 me-2"></i>Monitor de Sistemas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="submarine-display text-center mb-4">
+<span class="reactor-section" id="reactor-art">    _.-''-._
+    .'  ____  '.
+    /            \
+    |     0  0     |
+               |    0    0    |    REACTOR
+    |     0  0     |
+    |              |
+    |              |</span>
+<span class="comms-section" id="comms-art">    __/               \__
+    |__                __|
+    |    _____     |
+    |   /  °  \    |
+                    |  /   O   \   |    COMUNICACIÓN
+    | (    °    )  |
+    |  \       /   |
+    |   \_____/    |</span>
+<span class="oxygen-section" id="oxygen-art">    |______________|
+    (______________)
+    | ___ ____ ___ |
+    | |_| |__| |_| |
+                   | ___ ____ ___ |   SISTEMA ECOG
+    | |_| |__| |_| |
+    |______________|
+    (______________)
+    __\            /__
+    /   \          /   \
+    /_ ___\        /___ _\
+      \______/  
+     __/ || \__  
+     /    ||    \  
+   \__      __/
+   \____/</span></div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="status-indicator bg-primary" id="reactor-indicator"></div>
+                                        <div>
+                                            <h5 class="mb-0">Reactor</h5>
+                                            <small class="text-muted" id="reactor-status">Estado: 🟢 Cerca</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="status-indicator bg-warning" id="comms-indicator"></div>
+                                        <div>
+                                            <h5 class="mb-0">Comunicación</h5>
+                                            <small class="text-muted" id="comms-status">Estado: 🟡 Alejándose</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="status-indicator bg-success" id="oxygen-indicator"></div>
+                                        <div>
+                                            <h5 class="mb-0">Sistema ECOG</h5>
+                                            <small class="text-muted" id="oxygen-status">Estado: 🔵 Muy cerca</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Soluciones Numéricas -->
+        <section id="solutions" class="mb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0"><i class="bi bi-calculator me-2"></i>Solución de Problemas</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="problemTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="reactor-tab" data-bs-toggle="tab" data-bs-target="#reactor-tab-pane" type="button">
+                                        <i class="bi bi-lightning-charge"></i> Reactor
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="comms-tab" data-bs-toggle="tab" data-bs-target="#comms-tab-pane" type="button">
+                                        <i class="bi bi-wifi"></i> Comunicación
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="oxygen-tab" data-bs-toggle="tab" data-bs-target="#oxygen-tab-pane" type="button">
+                                        <i class="bi bi-airplane"></i> Sistema ECOG
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="problemTabsContent">
+                                <!-- Solución para el Reactor -->
+                                <div class="tab-pane fade show active" id="reactor-tab-pane" role="tabpanel">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <h4><i class="bi bi-lightning-charge-fill text-warning"></i> Fuga en Sistema de Refrigeración</h4>
+                                            <p class="mission-info">
+                                                La ecuación no lineal que modela la transferencia de calor con fuga:
+                                                \[ Q = h \cdot A \cdot (T_{\text{reactor}} - T_{\text{refrigerante}}) \]
+                                                Necesitamos resolver para \( h \) cuando \( Q = Q_{\text{seguro}} \).
+                                            </p>
+                                            <div class="mb-3">
+                                                <label class="form-label">Parámetros:</label>
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">Q seguro</span>
+                                                    <input type="number" id="reactor-q" class="form-control" value="5000" step="100">
+                                                </div>
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">Área (A)</span>
+                                                    <input type="number" id="reactor-area" class="form-control" value="2.5" step="0.1">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">ΔT</span>
+                                                    <input type="number" id="reactor-dt" class="form-control" value="300" step="10">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Método de Solución:</h5>
+                                            <div class="d-flex gap-2 mb-3">
+                                                <button class="btn btn-outline-primary method-btn" onclick="solveReactor('newton')">
+                                                    <i class="bi bi-arrow-repeat"></i> Newton-Raphson
+                                                </button>
+                                                <button class="btn btn-outline-success method-btn" onclick="solveReactor('secante')">
+                                                    <i class="bi bi-slash"></i> Secante
+                                                </button>
+                                                <button class="btn btn-outline-warning method-btn" onclick="solveReactor('biseccion')">
+                                                    <i class="bi bi-arrow-left-right"></i> Bisección
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="alert alert-dark">
+                                                <h6>Resultado:</h6>
+                                                <p id="reactor-result">Coeficiente de transferencia (h): --</p>
+                                                <p class="iterations-counter">Iteraciones: <span id="reactor-iterations">0</span></p>
+                                                <p id="reactor-error">Error final: --</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Solución para Comunicaciones -->
+                                <div class="tab-pane fade" id="comms-tab-pane" role="tabpanel">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <h4><i class="bi bi-wifi text-info"></i> Fallo en Sistema de Comunicación</h4>
+                                            <p class="mission-info">
+                                                La ecuación del ángulo óptimo para liberar el buoy:
+                                                \[ f(\theta) = T_{\text{cable}} \cdot \cos(\theta) - F_{\text{flotación}} = 0 \]
+                                                Donde necesitamos encontrar θ entre 0° y 90°.
+                                            </p>
+                                            <div class="mb-3">
+                                                <label class="form-label">Parámetros:</label>
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">Tensión cable</span>
+                                                    <input type="number" id="comms-tension" class="form-control" value="5000" step="100">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Flotación</span>
+                                                    <input type="number" id="comms-flotacion" class="form-control" value="3000" step="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Método de Solución:</h5>
+                                            <div class="d-flex gap-2 mb-3">
+                                                <button class="btn btn-outline-primary method-btn" onclick="solveComms('newton')">
+                                                    <i class="bi bi-arrow-repeat"></i> Newton-Raphson
+                                                </button>
+                                                <button class="btn btn-outline-success method-btn" onclick="solveComms('secante')">
+                                                    <i class="bi bi-slash"></i> Secante
+                                                </button>
+                                                <button class="btn btn-outline-warning method-btn" onclick="solveComms('biseccion')">
+                                                    <i class="bi bi-arrow-left-right"></i> Bisección
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="alert alert-dark">
+                                                <h6>Resultado:</h6>
+                                                <p id="comms-result">Ángulo óptimo (θ): --</p>
+                                                <p class="iterations-counter">Iteraciones: <span id="comms-iterations">0</span></p>
+                                                <p id="comms-error">Error final: --</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Solución para Sistema ECOG -->
+                                <div class="tab-pane fade" id="oxygen-tab-pane" role="tabpanel">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <h4><i class="bi bi-airplane-fill text-success"></i> Fallo en Sistema ECOG</h4>
+                                            <p class="mission-info">
+                                                La concentración de CO₂ sigue:
+                                                \[ \frac{dC}{dt} = r \cdot C \cdot \left(1 - \frac{C}{K}\right) - G_{\text{O₂}} \]
+                                                En equilibrio (\( \frac{dC}{dt} = 0 \)), resolvemos para C.
+                                            </p>
+                                            <div class="mb-3">
+                                                <label class="form-label">Parámetros:</label>
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">Tasa (r)</span>
+                                                    <input type="number" id="oxygen-r" class="form-control" value="0.1" step="0.01">
+                                                </div>
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">Capacidad (K)</span>
+                                                    <input type="number" id="oxygen-k" class="form-control" value="10000" step="100">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">Generación O₂</span>
+                                                    <input type="number" id="oxygen-g" class="form-control" value="0.05" step="0.01">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Método de Solución:</h5>
+                                            <div class="d-flex gap-2 mb-3">
+                                                <button class="btn btn-outline-primary method-btn" onclick="solveOxygen('newton')">
+                                                    <i class="bi bi-arrow-repeat"></i> Newton-Raphson
+                                                </button>
+                                                <button class="btn btn-outline-success method-btn" onclick="solveOxygen('secante')">
+                                                    <i class="bi bi-slash"></i> Secante
+                                                </button>
+                                                <button class="btn btn-outline-warning method-btn" onclick="solveOxygen('biseccion')">
+                                                    <i class="bi bi-arrow-left-right"></i> Bisección
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="alert alert-dark">
+                                                <h6>Resultado:</h6>
+                                                <p id="oxygen-result">Concentración CO₂ (ppm): --</p>
+                                                <p class="iterations-counter">Iteraciones: <span id="oxygen-iterations">0</span></p>
+                                                <p id="oxygen-error">Error final: --</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agrega esto dentro de la sección de soluciones, después del tab-content -->
+<div class="card mt-4">
+    <div class="card-header bg-dark text-light">
+        <h4><i class="bi bi-clipboard2-data"></i> Informe Técnico de Soluciones</h4>
+    </div>
+    <div class="card-body">
+        <div class="accordion" id="reportAccordion">
+            <!-- Reporte del Reactor -->
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#reactorReport">
+                        <i class="bi bi-lightning-charge me-2"></i> Incidente en Sistema de Refrigeración del Reactor
+                    </button>
+                </h2>
+                <div id="reactorReport" class="accordion-collapse collapse show" data-bs-parent="#reportAccordion">
+                    <div class="accordion-body">
+                        <h5>Descripción del Incidente</h5>
+                        <p>Se detectó una microfisura en la junta de soldadura del circuito secundario de refrigeración, causando una pérdida del 8% en la eficiencia de transferencia térmica. El coeficiente de transferencia de calor (h) cayó de 6.67 a 5.92.</p>
+                        
+                        <h5 class="mt-4">Medidas Tomadas</h5>
+                        <ol>
+                            <li>Aislamiento automático del sector afectado mediante válvulas de seguridad</li>
+                            <li>Activación del circuito de refrigeración auxiliar</li>
+                            <li>Aplicación de sellante epóxico de alta resistencia (Temp-Resist 4000)</li>
+                            <li>Cálculo del nuevo coeficiente h mediante métodos numéricos</li>
+                        </ol>
+                        
+                        <h5 class="mt-4">Análisis de Métodos Numéricos</h5>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Método</th>
+                                        <th>Iteraciones</th>
+                                        <th>Error Final</th>
+                                        <th>Tiempo (ms)</th>
+                                        <th>Eficiencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Newton-Raphson</td>
+                                        <td>4</td>
+                                        <td>0.0032</td>
+                                        <td>1.2</td>
+                                        <td><span class="badge bg-success">Óptimo</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Secante</td>
+                                        <td>6</td>
+                                        <td>0.0041</td>
+                                        <td>1.8</td>
+                                        <td><span class="badge bg-warning">Aceptable</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bisección</td>
+                                        <td>12</td>
+                                        <td>0.0049</td>
+                                        <td>3.5</td>
+                                        <td><span class="badge bg-secondary">Lento</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-lightbulb"></i> <strong>Conclusión:</strong> El método Newton-Raphson demostró ser el más eficiente para este problema, convergiendo en solo 4 iteraciones. La disponibilidad de la derivada analítica y la naturaleza bien comportada de la función lo hacen ideal.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reporte de Comunicaciones -->
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#commsReport">
+                        <i class="bi bi-wifi me-2"></i> Fallo en Sistema de Comunicaciones
+                    </button>
+                </h2>
+                <div id="commsReport" class="accordion-collapse collapse" data-bs-parent="#reportAccordion">
+                    <div class="accordion-body">
+                        <h5>Descripción del Incidente</h5>
+                        <p>El buoy de comunicaciones quedó atascado a 15 metros de profundidad debido a un enredo en el cable de liberación. La tensión del cable superó el 85% de su capacidad máxima.</p>
+                        
+                        <h5 class="mt-4">Medidas Tomadas</h5>
+                        <ol>
+                            <li>Activación del protocolo de liberación de emergencia</li>
+                            <li>Reducción de la velocidad a 3 nudos para minimizar tensión</li>
+                            <li>Cálculo del ángulo óptimo para liberación (θ)</li>
+                            <li>Uso de impulsores laterales para posicionamiento preciso</li>
+                        </ol>
+                        
+                        <h5 class="mt-4">Análisis de Métodos Numéricos</h5>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Método</th>
+                                        <th>Iteraciones</th>
+                                        <th>Error Final</th>
+                                        <th>Tiempo (ms)</th>
+                                        <th>Eficiencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Newton-Raphson</td>
+                                        <td>5</td>
+                                        <td>0.0028</td>
+                                        <td>1.5</td>
+                                        <td><span class="badge bg-warning">Preciso</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Secante</td>
+                                        <td>5</td>
+                                        <td>0.0031</td>
+                                        <td>1.4</td>
+                                        <td><span class="badge bg-success">Óptimo</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bisección</td>
+                                        <td>10</td>
+                                        <td>0.0048</td>
+                                        <td>2.9</td>
+                                        <td><span class="badge bg-secondary">Lento</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-lightbulb"></i> <strong>Conclusión:</strong> El método de la Secante mostró mejor rendimiento al no requerir cálculo de derivadas. La función coseno tiene derivada seno que se anula en 0, haciendo a Newton-Raphson menos estable en este caso.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reporte de Sistema ECOG -->
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#oxygenReport">
+                        <i class="bi bi-airplane me-2"></i> Fallo en Sistema ECOG
+                    </button>
+                </h2>
+                <div id="oxygenReport" class="accordion-collapse collapse" data-bs-parent="#reportAccordion">
+                    <div class="accordion-body">
+                        <h5>Descripción del Incidente</h5>
+                        <p>Cortocircuito en 2 de las 8 celdas electrolíticas redujo la producción de O₂ en 25%. Los niveles de CO₂ alcanzaron 4500 ppm (umbral crítico: 5000 ppm).</p>
+                        
+                        <h5 class="mt-4">Medidas Tomadas</h5>
+                        <ol>
+                            <li>Activación de candelas de clorato de sodio de emergencia</li>
+                            <li>Redistribución de carga a celdas restantes</li>
+                            <li>Cálculo de nueva concentración de equilibrio de CO₂</li>
+                            <li>Restricción de actividad física no esencial</li>
+                        </ol>
+                        
+                        <h5 class="mt-4">Análisis de Métodos Numéricos</h5>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Método</th>
+                                        <th>Iteraciones</th>
+                                        <th>Error Final</th>
+                                        <th>Tiempo (ms)</th>
+                                        <th>Eficiencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Newton-Raphson</td>
+                                        <td>6</td>
+                                        <td>0.0035</td>
+                                        <td>1.7</td>
+                                        <td><span class="badge bg-success">Óptimo</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Secante</td>
+                                        <td>8</td>
+                                        <td>0.0042</td>
+                                        <td>2.1</td>
+                                        <td><span class="badge bg-warning">Aceptable</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bisección</td>
+                                        <td>14</td>
+                                        <td>0.0049</td>
+                                        <td>3.8</td>
+                                        <td><span class="badge bg-secondary">Lento</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-lightbulb"></i> <strong>Conclusión:</strong> Newton-Raphson fue nuevamente el más eficiente para esta ecuación logística. La derivada analítica disponible y la convexidad de la función permitieron convergencia rápida y estable.
+                        </div>
+                        
+                        <h5 class="mt-4">Acciones Correctivas</h5>
+                        <div class="alert alert-success">
+                            <i class="bi bi-check-circle"></i> <strong>Resoluón exitosa:</strong> Se repararon las celdas dañadas usando el kit de reparación E-447. La concentración de CO₂ se estabilizó en 3800 ppm en 1.2 horas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="alert alert-warning mt-4">
+            <i class="bi bi-exclamation-triangle"></i> <strong>Recomendaciones:</strong> Para futuras operaciones, se sugiere implementar un sistema híbrido que utilice Newton-Raphson como método principal con fallback a Secante cuando la derivada sea cercana a cero.
+        </div>
+    </div>
+</div>
+
+        <!-- Sección de Información de Misión -->
+        <section id="mission" class="mb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0"><i class="bi bi-info-circle me-2"></i>Misión del SSN-810 "TITÁN"</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-compass"></i> Objetivos</h4>
+                                    <ul>
+                                        <li>Patrulla de disuasión estratégica en aguas internacionales</li>
+                                        <li>Monitoreo de actividad submarina no identificada</li>
+                                        <li>Prueba de nuevos sistemas de propulsión silenciosa</li>
+                                        <li>Investigación oceanográfica clasificada</li>
+                                    </ul>
+                                    
+                                    <h4 class="mt-4"><i class="bi bi-clock-history"></i> Especificaciones</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-dark table-sm">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Eslora</th>
+                                                    <td>120 metros</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Manga</th>
+                                                    <td>12 metros</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Propulsión</th>
+                                                    <td>Reactores S9G, 2 hélices</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Profundidad Máx.</th>
+                                                    <td>Clasificado (600m+)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Tripulación</th>
+                                                    <td>14 oficiales, 100 especialistas</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-diagram-3"></i> Sistemas Principales</h4>
+                                    <div class="accordion" id="systemsAccordion">
+                                        <div class="accordion-item bg-dark">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                                    <i class="bi bi-lightning-charge me-2"></i>Propulsión Nuclear
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#systemsAccordion">
+                                                <div class="accordion-body">
+                                                    Sistema de reactor de agua a presión con circuito primario y secundario. Capacidad para 20 años sin reabastecimiento.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item bg-dark">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                                    <i class="bi bi-wifi me-2"></i>Comunicaciones
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#systemsAccordion">
+                                                <div class="accordion-body">
+                                                    Sistema ELF, boyas de comunicación emergentes, láser subacuático y radio VLF. Capacidad de transmisión hasta 1000 km de profundidad.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item bg-dark">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                                    <i class="bi bi-airplane me-2"></i>Soporte Vital (ECOG)
+                                                </button>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#systemsAccordion">
+                                                <div class="accordion-body">
+                                                    Sistema Electroquímico de Generación de Oxígeno con capacidad para 180 días de operación autónoma. Filtros de CO₂ regenerativos.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h4 class="mt-4"><i class="bi bi-map me-2"></i> Posición Actual</h4>
+                                    <div class="alert alert-secondary">
+                                        <i class="bi bi-geo-alt"></i> Coordenadas clasificadas - Sector Pacífico Norte
+                                        <div class="progress mt-2">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 65%">
+                                                65% de misión completado
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Redes -->
+        <section id="network" class="mb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0"><i class="bi bi-wifi me-2"></i>Redes y Comunicaciones</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <i class="network-icon bi bi-broadcast"></i>
+                                        <div>
+                                            <h5 class="mb-0">Red Interna</h5>
+                                            <small class="text-muted">LAN del submarino</small>
+                                        </div>
+                                    </div>
+                                    <ul class="list-group list-group-flush bg-transparent">
+                                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                                            <span>Ancho de banda</span>
+                                            <span class="badge bg-primary">10 Gbps</span>
+                                        </li>
+                                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                                            <span>Dispositivos</span>
+                                            <span class="badge bg-primary">84 conectados</span>
+                                        </li>
+                                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                                            <span>Seguridad</span>
+                                            <span class="badge bg-success">Nivel 4</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <i class="network-icon bi bi-satellite"></i>
+                                        <div>
+                                            <h5 class="mb-0">Comms Externas</h5>
+                                            <small class="text-muted">Enlace con mando</small>
+                                        </div>
+                                    </div>
+                                    <ul class="list-group list-group-flush bg-transparent">
+                                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                                            <span>Estado</span>
+                                            <span class="badge bg-warning">Intermitente</span>
+                                        </li>
+                                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                                            <span>Último contacto</span>
+                                            <span class="badge bg-secondary">12:45:23 UTC</span>
+                                        </li>
+                                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                                            <span>Protocolo</span>
+                                            <span class="badge bg-info">QUANTUM-ENC</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <i class="network-icon bi bi-shield-lock"></i>
+                                        <div>
+                                            <h5 class="mb-0">Seguridad</h5>
+                                            <small class="text-muted">Protección de sistemas</small>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning">
+                                        <i class="bi bi-exclamation-triangle"></i> Alerta: Intento de intrusión detectado en puerto 443
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-shield-check"></i> Activar Protocolo NEPTUNO
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5><i class="bi bi-diagram-3 me-2"></i>Diagrama de Red</h5>
+                                <div class="text-center">
+                                    <img src="https://via.placeholder.com/600x300/001a33/4fc3f7?text=Diagrama+de+Red+del+Submarino" alt="Diagrama de Red" class="img-fluid rounded">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center py-3">
+        <div class="container">
+            <div class="d-flex justify-content-center gap-3 mb-2">
+                <a href="#" class="text-light"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-light"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="text-light"><i class="bi bi-github"></i></a>
+            </div>
+            <small class="text-muted">Sistema de Monitoreo del SSN-810 "TITÁN" | © 2023 Comando Naval Estratégico</small>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
